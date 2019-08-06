@@ -12,27 +12,28 @@
 
 #include "fractol.h"
 
-int             julia_motion(int x, int y, t_mlx *fractol)
+int             julia_motion(int x, int y, t_mlx *mlx)
 {
-    fractol->k = init_complex(
-        4 * ((double)x / WIDTH - 0.5),
-        4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
-    draw_fractal(fractol);
-    return (1);
+	mlx->k = init_complex(
+		4 * ((double)x / WIDTH - 0.5),
+		4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
+	return (1);
 }
 
 int				mouse_move(int x, int y, t_mlx *mlx)
 {
 	(mlx->frac == 1) ? julia_motion(x, y, mlx) : 0;
-	return (1);
+	draw_fractal(mlx);
+	return (0);
 }
 
 int				mouse_press(int keycode, int x, int y, t_mlx *mlx)
 {
-    t_mlx		*param;
-    keycode = 0;
-    x = 0;
-    y = 0;
-    param = mlx;
+	t_mlx		*param;
+
+	keycode = 0;
+	x = 0;
+	y = 0;
+	param = mlx;
 	return (1);
 }

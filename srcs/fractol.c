@@ -75,12 +75,13 @@ int				main(int c, char **s)
 
 	if (!check_args(c, s, &mlx))
 		threw(USAGE, 1);
-	mlx.iter = 80;
+	mlx.k = init_complex(-0.4, 0.6);
+	mlx.iter = 100;
 	mlx.ptr = mlx_init();
 	mlx.img = NULL;
 	mlx.wind = mlx_new_window(mlx.ptr, WIDTH, HEIGHT, WIND);
 	mlx_hook(mlx.wind, 17, (1L << 17), expose_hook, &mlx);
-	mlx_hook(mlx.wind, 4, 0, mouse_move, &mlx);
+	mlx_hook(mlx.wind, 6, 0, mouse_move, &mlx);
 	mlx_hook(mlx.wind, 2, 0, key_press, &mlx);
 	mlx_hook(mlx.wind, 4, 0, mouse_press, &mlx);
 	mlx_loop_hook(mlx.ptr, draw_fractal, &mlx);

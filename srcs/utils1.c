@@ -55,5 +55,4 @@ void			set_color_m(t_mlx *mlx, t_mand *m, int i)
 	blue = (int)(8.5 * pow((1 - t), 3) * t * 255);
 	mlx->picture[i] = (c != m->max_iteration)
 	? (c << red) + (c << green) + (c << blue) : 0;
-	// mlx->picture[i] = (int)(255 * t);
 }
