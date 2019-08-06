@@ -1,0 +1,117 @@
+cmake_minimum_required(VERSION 3.14)
+project(fractol C)
+
+set(CMAKE_C_STANDARD 11)
+
+include_directories(includes)
+include_directories(libft/ft_printf/includes)
+include_directories(libft/includes)
+
+add_executable(fractol
+        includes/f_string.h
+        includes/fractol.h
+        libft/ft_printf/includes/ft_printf.h
+        libft/ft_printf/srcs/char.c
+        libft/ft_printf/srcs/colors.c
+        libft/ft_printf/srcs/float.c
+        libft/ft_printf/srcs/float_handler.c
+        libft/ft_printf/srcs/float_prec.c
+        libft/ft_printf/srcs/float_utils.c
+        libft/ft_printf/srcs/float_writer.c
+        libft/ft_printf/srcs/ft_printf.c
+        libft/ft_printf/srcs/int.c
+        libft/ft_printf/srcs/int_caster.c
+        libft/ft_printf/srcs/miscellaneous.c
+        libft/ft_printf/srcs/output.c
+        libft/ft_printf/srcs/parsing.c
+        libft/includes/get_next_line.h
+        libft/includes/libft.h
+        libft/srcs/ft_abs.c
+        libft/srcs/ft_atoi.c
+        libft/srcs/ft_atoi_base.c
+        libft/srcs/ft_btree_apply_infix.c
+        libft/srcs/ft_btree_apply_prefix.c
+        libft/srcs/ft_btree_apply_suffix.c
+        libft/srcs/ft_btree_create_node.c
+        libft/srcs/ft_btree_delone.c
+        libft/srcs/ft_bzero.c
+        libft/srcs/ft_factorial.c
+        libft/srcs/ft_gcd.c
+        libft/srcs/ft_isalnum.c
+        libft/srcs/ft_isalpha.c
+        libft/srcs/ft_isascii.c
+        libft/srcs/ft_isdigit.c
+        libft/srcs/ft_isprint.c
+        libft/srcs/ft_itoa.c
+        libft/srcs/ft_itoa_base.c
+        libft/srcs/ft_lstadd.c
+        libft/srcs/ft_lstdel.c
+        libft/srcs/ft_lstdelone.c
+        libft/srcs/ft_lstiter.c
+        libft/srcs/ft_lstmap.c
+        libft/srcs/ft_lstnew.c
+        libft/srcs/ft_memalloc.c
+        libft/srcs/ft_memccpy.c
+        libft/srcs/ft_memchr.c
+        libft/srcs/ft_memcmp.c
+        libft/srcs/ft_memcpy.c
+        libft/srcs/ft_memdel.c
+        libft/srcs/ft_memmove.c
+        libft/srcs/ft_memset.c
+        libft/srcs/ft_memswap.c
+        libft/srcs/ft_nextprime.c
+        libft/srcs/ft_power.c
+        libft/srcs/ft_putchar.c
+        libft/srcs/ft_putchar_fd.c
+        libft/srcs/ft_putendl.c
+        libft/srcs/ft_putendl_fd.c
+        libft/srcs/ft_putnbr.c
+        libft/srcs/ft_putnbr_fd.c
+        libft/srcs/ft_putstr.c
+        libft/srcs/ft_putstr_fd.c
+        libft/srcs/ft_putwchar.c
+        libft/srcs/ft_putwchar_fd.c
+        libft/srcs/ft_putwstr.c
+        libft/srcs/ft_putwstr_fd.c
+        libft/srcs/ft_qsort.c
+        libft/srcs/ft_sqrt.c
+        libft/srcs/ft_strcat.c
+        libft/srcs/ft_strchr.c
+        libft/srcs/ft_strclr.c
+        libft/srcs/ft_strcmp.c
+        libft/srcs/ft_strcpy.c
+        libft/srcs/ft_strdel.c
+        libft/srcs/ft_strdup.c
+        libft/srcs/ft_strequ.c
+        libft/srcs/ft_striter.c
+        libft/srcs/ft_striteri.c
+        libft/srcs/ft_strjoin.c
+        libft/srcs/ft_strlcat.c
+        libft/srcs/ft_strlen.c
+        libft/srcs/ft_strmap.c
+        libft/srcs/ft_strmapi.c
+        libft/srcs/ft_strncat.c
+        libft/srcs/ft_strncmp.c
+        libft/srcs/ft_strncpy.c
+        libft/srcs/ft_strnequ.c
+        libft/srcs/ft_strnew.c
+        libft/srcs/ft_strnstr.c
+        libft/srcs/ft_strrchr.c
+        libft/srcs/ft_strsplit.c
+        libft/srcs/ft_strstr.c
+        libft/srcs/ft_strsub.c
+        libft/srcs/ft_strtrim.c
+        libft/srcs/ft_tolower.c
+        libft/srcs/ft_toupper.c
+        libft/srcs/ft_wcharlen.c
+        libft/srcs/ft_wstrlen.c
+        libft/srcs/get_next_line.c
+        srcs/draw_fractol.c
+        srcs/fractol.c
+        srcs/keyboard.c
+        srcs/mouse.c
+        srcs/utils1.c)
+
+target_link_libraries(fractol ${CMAKE_SOURCE_DIR}/libmlx.a)
+target_link_libraries(fractol "-framework OpenGL")
+target_link_libraries(fractol "-framework AppKit")

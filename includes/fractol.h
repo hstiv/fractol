@@ -46,7 +46,7 @@ typedef	struct	s_mand
 
 typedef struct	s_mlx
 {
-	char		frac[5];
+	int			frac;
 	void		*ptr;
 	void		*wind;
 	void		*img;
@@ -59,13 +59,13 @@ typedef struct	s_mlx
 }				t_mlx;
 
 /*
-**	------------FUNCTIONS-------------*
+**	------------FUNCTIONS-------------	*
 */
 
 /*
 **				fractol.c					*
 */
-int				threw(char *s);
+int				threw(char *s, int i);
 int				check_args(int c, char **s, t_mlx *mlx);
 int				draw_fractal(t_mlx *mlx);
 
@@ -86,7 +86,6 @@ int				mouse_press(int keycode, int x, int y, t_mlx *mlx);
 **				utils1.c					*
 */
 t_complex		init_complex(double re, double im);
-void            clear_img(int *img, int size);
 void			init_mand(int iteration, t_mand *mand, t_mlx *mlx);
 void			set_color_m(t_mlx *mlx, t_mand *m, int i);
 

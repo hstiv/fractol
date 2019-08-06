@@ -18,13 +18,13 @@ int             julia_motion(int x, int y, t_mlx *fractol)
         4 * ((double)x / WIDTH - 0.5),
         4 * ((double)(HEIGHT - y) / HEIGHT - 0.5));
     draw_fractal(fractol);
-    return (0);
+    return (1);
 }
 
 int				mouse_move(int x, int y, t_mlx *mlx)
 {
-	(mlx->frac[0]) ? julia_motion(x, y, mlx) : 0;
-	return (0);
+	(mlx->frac == 1) ? julia_motion(x, y, mlx) : 0;
+	return (1);
 }
 
 int				mouse_press(int keycode, int x, int y, t_mlx *mlx)
@@ -34,5 +34,5 @@ int				mouse_press(int keycode, int x, int y, t_mlx *mlx)
     x = 0;
     y = 0;
     param = mlx;
-	return (0);
+	return (1);
 }
