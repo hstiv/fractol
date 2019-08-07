@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef F__STRING_H
-# define F__STRING_H
+#ifndef F_STRING_H
+# define F_STRING_H
 
 # define JU			"julia"
 # define MAN		"mandelbrot"
@@ -26,7 +26,7 @@
 **			USAGE		*
 */
 # define WIND		"fract'ol"
-# define USAGE		"\n Usage :  ./fractol  [ fractol_name ]\n\n" USAGE1
+# define USAGE		"\n Usage :  ./fractol [fractol_name]\n\n" USAGE1
 # define USAGE1		"---> " JU "\n" USAGE2
 # define USAGE2		"---> " MAN "\n" USAGE3
 # define USAGE3		"---> " M_BAR "\n" USAGE4
@@ -34,7 +34,7 @@
 # define USAGE5		"---> " P_BUF " (perpendicular buffalo)\n" US6
 # define US6		"---> " PB_SHIP " (perpendicular burning ship)\n" US7
 # define US7		"---> " P_MAN " (perpendicular mandelbrot)\n" US8
-# define US8		"---> " C_MAN " (celtic mandelbrot)\n"
+# define US8		"---> " C_MAN " (celtic mandelbrot)\n\n"
 
 /*
 **			HELP - difines			*

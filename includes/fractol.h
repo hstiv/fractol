@@ -17,6 +17,9 @@
 # include <stdio.h>
 # include <mlx.h>
 # include <math.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+# include <pthread.h>
 # include "f_string.h"
 
 /*
@@ -43,7 +46,6 @@ typedef	struct	s_mand
 	int			y;
 }				t_mand;
 
-
 typedef struct	s_mlx
 {
 	int			frac;
@@ -56,6 +58,7 @@ typedef struct	s_mlx
 	int			endian;
 	int			iter;
 	t_complex	k;
+	t_mand		*m;
 	int			help;
 }				t_mlx;
 
@@ -68,7 +71,7 @@ typedef struct	s_mlx
 */
 int				threw(char *s, int i);
 int				check_args(int c, char **s, t_mlx *mlx);
-void			fractal(t_mlx *mlx);
+void			loop(t_mlx *mlx);
 
 /*
 **				keyboard.c					*
@@ -81,7 +84,7 @@ int				key_release(int key, t_mlx *mlx);
 /*
 **				mouse.c						*
 */
-int             julia_motion(int x, int y, t_mlx *fractol);
+int				julia_motion(int x, int y, t_mlx *fractol);
 int				mouse_move(int x, int y, t_mlx *mlx);
 int				mouse_press(int keycode, int x, int y, t_mlx *mlx);
 
@@ -99,6 +102,6 @@ void			put_man(t_mlx *mlx);
 int				draw_fractal(t_mlx *mlx);
 void			define_fractal(t_mlx *mlx, t_mand *m);
 void			define_fractal1(t_mlx *mlx, t_mand *m);
-void			x_cycle(t_mlx *mlx, t_mand *m);
+void			x_cycle(t_mlx *mlx);
 
 #endif

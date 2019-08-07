@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void			define_fractal1(t_mlx *mlx, t_mand *m)
+void				define_fractal1(t_mlx *mlx, t_mand *m)
 {
 	if (mlx->frac == 5)
 		m->z = init_complex(
@@ -32,7 +32,7 @@ void			define_fractal1(t_mlx *mlx, t_mand *m)
         -2.0 * m->z.re * m->z.im + m->c.im);
 }
 
-void			define_fractal(t_mlx *mlx, t_mand *m)
+void				define_fractal(t_mlx *mlx, t_mand *m)
 {
 	if (mlx->frac == 1)
 		m->z = init_complex(
@@ -54,8 +54,11 @@ void			define_fractal(t_mlx *mlx, t_mand *m)
 		define_fractal1(mlx, m);
 }
 
-void			x_cycle(t_mlx *mlx, t_mand *m)
+void				x_cycle(t_mlx *mlx)
 {
+	t_mand			*m;
+
+	m = mlx->m;
 	m->x = -1;
 	m->c.im = m->max.im - m->y * m->factor.im;
 	while (++m->x < WIDTH)
@@ -74,15 +77,16 @@ void			x_cycle(t_mlx *mlx, t_mand *m)
 	}
 }
 
-int				draw_fractal(t_mlx *mlx)
+int					draw_fractal(t_mlx *mlx)
 {
-	t_mand		m;
+	t_mand			m;
 
 	init_mand(mlx->iter, &m, mlx);
+	mlx->m = &m;
 	if (!mlx->help)
 	{
 		while (++m.y < HEIGHT)
-			x_cycle(mlx, &m);
+			x_cycle(mlx);
 	}
 	mlx_put_image_to_window(mlx->ptr, mlx->wind, mlx->img, 0, 0);
 	put_man(mlx);

@@ -39,7 +39,7 @@ int				check_args(int c, char **s, t_mlx *frc)
 	return(0);
 }
 
-void			fractal(t_mlx *mlx)
+void			loop(t_mlx *mlx)
 {
 	mlx_hook(mlx->wind, 17, (1L << 17), expose_hook, mlx);
 	mlx_hook(mlx->wind, 6, 0, mouse_move, mlx);
@@ -62,6 +62,6 @@ int				main(int c, char **s)
 	mlx.img = NULL;
 	mlx.help = 0;
 	mlx.wind = mlx_new_window(mlx.ptr, WIDTH, HEIGHT, WIND);
-	fractal(&mlx);
+	loop(&mlx);
 	exit(0);
 }
