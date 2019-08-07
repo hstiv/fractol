@@ -41,7 +41,7 @@ all:				$(NAME)
 
 $(NAME):			$(OBJ)
 					@ar rc $(NAME) $(OBJ)
-					@echo "$(GRN)\nLinking [ $(NAME) ] SUCCESS$(RES)"
+#					@echo "$(GRN)\nLinking [ $(NAME) ] SUCCESS$(RES)"
 
 $(LIB):				$(LIB_NAME)
 
@@ -49,15 +49,15 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c $(INC) $(LIB_INC)
 					@mkdir -p $(OBJ_PATH)
 					@gcc -Wall -Wextra -Wextra \
 						-I $(INC_PATH) -I $(LIB_INC_PATH) -o $@ -c $<
-					@echo ".\c"
+#					@echo ".\c"
 
 clean:
 					@rm -f $(OBJ)
 					@rm -rf $(OBJ_PATH)
-					@echo "$(MAG)Cleaning [ $(NAME) ] OK$(RES)"
+#					@echo "$(MAG)Cleaning [ $(NAME) ] OK$(RES)"
 
 fclean:				clean
 					@rm -f $(NAME)
-					@echo "$(MAG)Delete [ $(NAME) ] OK$(RES)"
+#					@echo "$(MAG)Delete [ $(NAME) ] OK$(RES)"
 
 re:					fclean all

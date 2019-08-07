@@ -56,6 +56,7 @@ typedef struct	s_mlx
 	int			endian;
 	int			iter;
 	t_complex	k;
+	int			help;
 }				t_mlx;
 
 /*
@@ -67,7 +68,7 @@ typedef struct	s_mlx
 */
 int				threw(char *s, int i);
 int				check_args(int c, char **s, t_mlx *mlx);
-int				draw_fractal(t_mlx *mlx);
+void			fractal(t_mlx *mlx);
 
 /*
 **				keyboard.c					*
@@ -75,6 +76,7 @@ int				draw_fractal(t_mlx *mlx);
 int				key_press(int keycode, t_mlx *mlx);
 int				expose_hook(void *param);
 void			reset_frac(t_mlx *mlx, int frac);
+int				key_release(int key, t_mlx *mlx);
 
 /*
 **				mouse.c						*
@@ -89,11 +91,14 @@ int				mouse_press(int keycode, int x, int y, t_mlx *mlx);
 t_complex		init_complex(double re, double im);
 void			init_mand(int iteration, t_mand *mand, t_mlx *mlx);
 void			set_color_m(t_mlx *mlx, t_mand *m, int i);
+void			put_man(t_mlx *mlx);
 
 /*
 **				draw_fractol.c				*
 */
+int				draw_fractal(t_mlx *mlx);
 void			define_fractal(t_mlx *mlx, t_mand *m);
 void			define_fractal1(t_mlx *mlx, t_mand *m);
+void			x_cycle(t_mlx *mlx, t_mand *m);
 
 #endif

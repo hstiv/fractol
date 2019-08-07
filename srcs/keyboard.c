@@ -12,6 +12,12 @@
 
 #include "fractol.h"
 
+int				key_release(int key, t_mlx *mlx)
+{
+	(key == 4) ? mlx->help = 0 : 0;
+	return (1);
+}
+
 void			reset_frac(t_mlx *mlx, int frac)
 {
 	(frac == 9) ? frac = 8 : 0;
@@ -40,6 +46,7 @@ int             key_press(int key, t_mlx *mlx)
 	(key == 53) ? exit (0) : 0;
 	(key == 124) ? mlx->iter++ : 0;
 	(key == 123) ? mlx->iter-- : 0;
+	(key == 4) ? mlx->help = 1 : 0;
 	if (key >= 83 && key <= 91)
 		reset_frac(mlx, key - 82);
     return (0);

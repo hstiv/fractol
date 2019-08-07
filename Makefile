@@ -1,6 +1,6 @@
-NAME			=		fractol
+NAME			=	fractol
 
-INC				=		includes/
+INC				=	includes/
 
 SRC_NAME		=	fractol.c draw_fractol.c keyboard.c \
 					mouse.c utils1.c
@@ -41,6 +41,7 @@ $(NAME):			$(LIB) $(OBJ)
 						@gcc -Wall -Wextra -Werror $(OBJ) \
 						-lmlx -framework OpenGL -framework AppKit -lm \
 						-L $(LIB_PATH) -lft -o $(NAME)
+						@echo "(•̀ᴗ•́)و $(NAME) generated!"
 
 $(OBJ_PATH)%.o:		$(SRC_PATH)%.c $(INC) $(LIB_INC)
 						@mkdir -p $(OBJ_PATH)
@@ -48,6 +49,7 @@ $(OBJ_PATH)%.o:		$(SRC_PATH)%.c $(INC) $(LIB_INC)
 						-I $(INC_PATH) -I $(LIB_INC_PATH) -o $@ -c $<
 
 clean:
+						@echo "(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧ $(NAME) is deleting... Wait a sec."
 						@make -C $(LIB_PATH) fclean
 						@rm -f $(OBJ)
 						@rm -rf $(OBJ_PATH)

@@ -40,6 +40,24 @@ void			init_mand(int iteration, t_mand *mand, t_mlx *mlx)
 	mand->i = 0;
 }
 
+void			put_man(t_mlx *mlx)
+{
+	(mlx->help == 0) ? mlx_string_put(mlx->ptr,
+	mlx->wind, WIDTH - 100, HEIGHT - 30, RED, HELP) : 0;
+	if (mlx->help == 1)
+	{
+		mlx_string_put(mlx->ptr, mlx->wind, W4, 10, GREEN, H1);
+		mlx_string_put(mlx->ptr, mlx->wind, W4, 30, GREEN, H2);
+		mlx_string_put(mlx->ptr, mlx->wind, W4, 50, GREEN, H3);
+		mlx_string_put(mlx->ptr, mlx->wind, W4, 70, GREEN, H4);
+		mlx_string_put(mlx->ptr, mlx->wind, W4, 90, GREEN, H5);
+		mlx_string_put(mlx->ptr, mlx->wind, W4, 110, GREEN, H6);
+		mlx_string_put(mlx->ptr, mlx->wind, W4, 130, GREEN, H7);
+		mlx_string_put(mlx->ptr, mlx->wind, W4, 150, GREEN, H8);
+		mlx_string_put(mlx->ptr, mlx->wind, W4, 190, GREEN, IT);
+	}
+}
+
 void			set_color_m(t_mlx *mlx, t_mand *m, int i)
 {
 	double		t;

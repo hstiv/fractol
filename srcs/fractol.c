@@ -39,32 +39,15 @@ int				check_args(int c, char **s, t_mlx *frc)
 	return(0);
 }
 
-int				draw_fractal(t_mlx *mlx)
+void			fractal(t_mlx *mlx)
 {
-	t_mand		m;
-
-	init_mand(mlx->iter, &m, mlx);
-	while (++m.y < HEIGHT)
-	{
-		m.x = -1;
-		m.c.im = m.max.im - m.y * m.factor.im;
-		while (++m.x < WIDTH)
-		{
-			m.c.re = m.min.re + m.x * m.factor.re;
-			m.z = init_complex(m.c.re, m.c.im);
-			m.iteration = 0;
-			while (pow(m.z.re, 2.0) + pow(m.z.im, 2.0) <= 4
-			&& m.iteration < m.max_iteration)
-			{
-				define_fractal(mlx, &m);
-				m.iteration++;
-			}
-			set_color_m(mlx, &m, m.i);
-			m.i++;
-		}
-	}
-	mlx_put_image_to_window(mlx->ptr, mlx->wind, mlx->img, 0, 0);
-	return (1);
+	mlx_hook(mlx->wind, 17, (1L << 17), expose_hook, mlx);
+	mlx_hook(mlx->wind, 6, 0, mouse_move, mlx);
+	mlx_hook(mlx->wind, 3, 0, key_release, mlx);
+	mlx_hook(mlx->wind, 2, 0, key_press, mlx);
+	mlx_hook(mlx->wind, 4, 0, mouse_press, mlx);
+	mlx_loop_hook(mlx->ptr, draw_fractal, mlx);
+	mlx_loop(mlx->ptr);
 }
 
 int				main(int c, char **s)
@@ -77,12 +60,8 @@ int				main(int c, char **s)
 	mlx.iter = 50;
 	mlx.ptr = mlx_init();
 	mlx.img = NULL;
+	mlx.help = 0;
 	mlx.wind = mlx_new_window(mlx.ptr, WIDTH, HEIGHT, WIND);
-	mlx_hook(mlx.wind, 17, (1L << 17), expose_hook, &mlx);
-	mlx_hook(mlx.wind, 6, 0, mouse_move, &mlx);
-	mlx_hook(mlx.wind, 2, 0, key_press, &mlx);
-	mlx_hook(mlx.wind, 4, 0, mouse_press, &mlx);
-	mlx_loop_hook(mlx.ptr, draw_fractal, &mlx);
-	mlx_loop(mlx.ptr);
+	fractal(&mlx);
 	exit(0);
 }

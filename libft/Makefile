@@ -71,23 +71,23 @@ $(NAME):		$(PRINTF) $(OBJ)
 				@cp $(PRINTF) $(NAME)
 				@ar rc $(NAME) $(OBJ)
 				@ranlib $(NAME)
-				@echo "$(GRN)\nLinking & indexing [ $(NAME) ] SUCCESS$(RES)"
+#				@echo "$(GRN)\nLinking & indexing [ $(NAME) ] SUCCESS$(RES)"
 
 $(PRINTF):		$(PRINTF_NAME)
 
 $(OBJ_PATH)%.o:	$(SRC_PATH)%.c $(INC)
 				@mkdir -p $(OBJ_PATH)
 				@gcc -Wall -Wextra -Werror -I $(INC_PATH) -o $@ -c $<
-				@echo ".\c"
+#				@echo ".\c"
 
 clean:
 				@make fclean -C $(PRINTF_PATH)
 				@rm -f $(OBJ)
 				@rm -rf $(OBJ_PATH)
-				@echo "$(MAG)Cleaning [ $(NAME) ] OK$(RES)"
+#				@echo "$(MAG)Cleaning [ $(NAME) ] OK$(RES)"
 
 fclean:			clean
 				@rm -f $(NAME)
-				@echo "$(MAG)Delete [ $(NAME) ] OK$(RES)"
+#				@echo "$(MAG)Delete [ $(NAME) ] OK$(RES)"
 
 re:				fclean all

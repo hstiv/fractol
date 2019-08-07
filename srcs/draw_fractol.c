@@ -53,3 +53,38 @@ void			define_fractal(t_mlx *mlx, t_mand *m)
 	else
 		define_fractal1(mlx, m);
 }
+
+void			x_cycle(t_mlx *mlx, t_mand *m)
+{
+	m->x = -1;
+	m->c.im = m->max.im - m->y * m->factor.im;
+	while (++m->x < WIDTH)
+	{
+		m->c.re = m->min.re + m->x * m->factor.re;
+		m->z = init_complex(m->c.re, m->c.im);
+		m->iteration = 0;
+		while (pow(m->z.re, 2.0) + pow(m->z.im, 2.0) <= 4
+		&& m->iteration < m->max_iteration)
+		{
+			define_fractal(mlx, m);
+			m->iteration++;
+		}
+		set_color_m(mlx, m, m->i);
+		m->i++;
+	}
+}
+
+int				draw_fractal(t_mlx *mlx)
+{
+	t_mand		m;
+
+	init_mand(mlx->iter, &m, mlx);
+	if (!mlx->help)
+	{
+		while (++m.y < HEIGHT)
+			x_cycle(mlx, &m);
+	}
+	mlx_put_image_to_window(mlx->ptr, mlx->wind, mlx->img, 0, 0);
+	put_man(mlx);
+	return (1);
+}
