@@ -74,6 +74,7 @@ int				draw_fractal(t_mlx *mlx);
 */
 int				key_press(int keycode, t_mlx *mlx);
 int				expose_hook(void *param);
+void			reset_frac(t_mlx *mlx, int frac);
 
 /*
 **				mouse.c						*

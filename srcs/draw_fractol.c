@@ -18,6 +18,18 @@ void			define_fractal1(t_mlx *mlx, t_mand *m)
 		m->z = init_complex(
 			fabs(pow(m->z.re, 2.0) - pow(m->z.im, 2.0)) + m->c.re,
 			-2.0 * m->z.re * fabs(m->z.im) + m->c.im);
+	if (mlx->frac == 6)
+		m->z = init_complex(
+        pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
+        -2.0 * m->z.re * fabs(m->z.im) + m->c.im);
+	if (mlx->frac == 7)
+		m->z = init_complex(
+        pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
+        -2.0 * fabs(m->z.re) * m->z.im + m->c.im);
+	if (mlx->frac == 8)
+		m->z = init_complex(
+        fabs(pow(m->z.re, 2.0) - pow(m->z.im, 2.0)) + m->c.re,
+        -2.0 * m->z.re * m->z.im + m->c.im);
 }
 
 void			define_fractal(t_mlx *mlx, t_mand *m)

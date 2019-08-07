@@ -16,7 +16,7 @@ int				threw(char *s, int i)
 {
 	if (s == NULL)
 		exit(0);
-	(i == 1) ? write(1, "\033[1;31m", 7) : 0;
+	(i == 1) ? write(1, "\033[0;32m", 7) : 0;
 	write(1, s, ft_strlen(s));
 	exit(0);
 }
@@ -26,17 +26,15 @@ int				check_args(int c, char **s, t_mlx *frc)
 	if (c != 2)
 		return (0);
 	frc->frac = 0;
-	if (ft_strequ("julia", s[1]))
-		frc->frac = 1;
-	else if (ft_strequ("mandelbrot", s[1]))
-		frc->frac = 2;
-	else if (ft_strequ("mandelbar", s[1]))
-		frc->frac = 3;
-	else if (ft_strequ("b_ship", s[1]))
-		frc->frac = 4;
-	else if (ft_strequ("p_buffalo", s[1]))
-		frc->frac = 5;
-	while (frc->frac != 0)
+	(ft_strequ(JU, s[1])) ? frc->frac = 1 : 0;
+	(ft_strequ(MAN, s[1])) ? frc->frac = 2 : 0;
+	(ft_strequ(M_BAR, s[1])) ? frc->frac = 3 : 0;
+	(ft_strequ(B_SHIP, s[1])) ? frc->frac = 4 : 0;
+	(ft_strequ(P_BUF, s[1])) ? frc->frac = 5 : 0;
+	(ft_strequ(PB_SHIP, s[1])) ? frc->frac = 6 : 0;
+	(ft_strequ(P_MAN, s[1])) ? frc->frac = 7 : 0;
+	(ft_strequ(C_MAN, s[1])) ? frc->frac = 8 : 0;
+	if (frc->frac != 0)
 		return(1);
 	return(0);
 }
@@ -76,7 +74,7 @@ int				main(int c, char **s)
 	if (!check_args(c, s, &mlx))
 		threw(USAGE, 1);
 	mlx.k = init_complex(-0.4, 0.6);
-	mlx.iter = 100;
+	mlx.iter = 50;
 	mlx.ptr = mlx_init();
 	mlx.img = NULL;
 	mlx.wind = mlx_new_window(mlx.ptr, WIDTH, HEIGHT, WIND);

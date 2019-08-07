@@ -12,6 +12,20 @@
 
 #include "fractol.h"
 
+void			reset_frac(t_mlx *mlx, int frac)
+{
+	(frac == 9) ? frac = 8 : 0;
+	if (mlx->frac == frac)
+	{
+		draw_fractal(mlx);
+		return ;
+	}
+	mlx->k = init_complex(-0.4, 0.6);
+	mlx->iter = 50;
+	mlx->frac = frac;
+	draw_fractal(mlx);
+}
+
 int				expose_hook(void *param)
 {
 	t_mlx		*mlx;
@@ -21,13 +35,12 @@ int				expose_hook(void *param)
 	exit(0);
 }
 
-int             key_press(int keycode, t_mlx *mlx)
+int             key_press(int key, t_mlx *mlx)
 {
-	t_mlx		*param;
-
-	if (keycode == 53)
-		exit (0);
-	param = mlx;
-	keycode = 0;
+	(key == 53) ? exit (0) : 0;
+	(key == 124) ? mlx->iter++ : 0;
+	(key == 123) ? mlx->iter-- : 0;
+	if (key >= 83 && key <= 91)
+		reset_frac(mlx, key - 82);
     return (0);
 }
