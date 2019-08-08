@@ -12,31 +12,31 @@
 
 #include "fractol.h"
 
-t_complex		init_complex(double re, double im)
+t_complex		nit_complex(double re, double im)
 {
-    t_complex	complex;
-    
-    complex.re = re;
-    complex.im = im;
-    return (complex);
+	t_complex	complex;
+
+	complex.re = re;
+	complex.im = im;
+	return (complex);
 }
 
 void			init_mand(int iteration, t_mand *mand, t_mlx *mlx)
 {
 	(mlx->img) ? mlx_destroy_image(mlx->ptr, mlx->img) : 0;
 	mlx->img = mlx_new_image(mlx->ptr, WIDTH, HEIGHT);
-	mlx->picture = (int *) mlx_get_data_addr(mlx->img,
+	mlx->picture = (int *)mlx_get_data_addr(mlx->img,
 	&mlx->bit_per_pixel, &mlx->size_line, &mlx->endian);
 	mand->min = init_complex(-2.0, -2.0);
 	mand->max.re = 2.0;
 	mand->max.im = mand->min.im +
 	(mand->max.re - mand->min.re) * HEIGHT / WIDTH;
 	mand->factor = init_complex(
-    (mand->max.re - mand->min.re) / (WIDTH - 1),
-    (mand->max.im - mand->min.im) / (HEIGHT - 1));
+	(mand->max.re - mand->min.re) / (WIDTH - 1),
+	(mand->max.im - mand->min.im) / (HEIGHT - 1));
 	mand->max_iteration = iteration;
 	mand->iteration = 0;
-	mand->y = -1;
+	mand->y = 0;
 	mand->i = 0;
 }
 

@@ -35,8 +35,8 @@ int				check_args(int c, char **s, t_mlx *frc)
 	(ft_strequ(P_MAN, s[1])) ? frc->frac = 7 : 0;
 	(ft_strequ(C_MAN, s[1])) ? frc->frac = 8 : 0;
 	if (frc->frac != 0)
-		return(1);
-	return(0);
+		return (1);
+	return (0);
 }
 
 void			loop(t_mlx *mlx)

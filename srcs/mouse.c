@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int             julia_motion(int x, int y, t_mlx *mlx)
+int				julia_motion(int x, int y, t_mlx *mlx)
 {
 	mlx->k = init_complex(
 		4 * ((double)x / WIDTH - 0.5),

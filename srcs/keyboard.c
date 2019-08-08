@@ -41,13 +41,13 @@ int				expose_hook(void *param)
 	exit(0);
 }
 
-int             key_press(int key, t_mlx *mlx)
+int				key_press(int key, t_mlx *mlx)
 {
-	(key == 53) ? exit (0) : 0;
+	(key == 53) ? exit(0) : 0;
 	(key == 124) ? mlx->iter++ : 0;
 	(key == 123) ? mlx->iter-- : 0;
 	(key == 4) ? mlx->help = 1 : 0;
 	if (key >= 83 && key <= 91)
 		reset_frac(mlx, key - 82);
-    return (0);
+	return (0);
 }

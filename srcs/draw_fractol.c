@@ -20,16 +20,16 @@ void				define_fractal1(t_mlx *mlx, t_mand *m)
 			-2.0 * m->z.re * fabs(m->z.im) + m->c.im);
 	if (mlx->frac == 6)
 		m->z = init_complex(
-        pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
-        -2.0 * m->z.re * fabs(m->z.im) + m->c.im);
+			pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
+			-2.0 * m->z.re * fabs(m->z.im) + m->c.im);
 	if (mlx->frac == 7)
 		m->z = init_complex(
-        pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
-        -2.0 * fabs(m->z.re) * m->z.im + m->c.im);
+			pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
+			-2.0 * fabs(m->z.re) * m->z.im + m->c.im);
 	if (mlx->frac == 8)
 		m->z = init_complex(
-        fabs(pow(m->z.re, 2.0) - pow(m->z.im, 2.0)) + m->c.re,
-        -2.0 * m->z.re * m->z.im + m->c.im);
+			fabs(pow(m->z.re, 2.0) - pow(m->z.im, 2.0)) + m->c.re,
+			-2.0 * m->z.re * m->z.im + m->c.im);
 }
 
 void				define_fractal(t_mlx *mlx, t_mand *m)
@@ -54,11 +54,14 @@ void				define_fractal(t_mlx *mlx, t_mand *m)
 		define_fractal1(mlx, m);
 }
 
-void				x_cycle(t_mlx *mlx)
+void				*x_cycle(void *mlx_t)
 {
 	t_mand			*m;
+	t_mlx			*mlx;
 
+	mlx = (t_mlx *)mlx_t;
 	m = mlx->m;
+	m->i = m->y * HEIGHT;
 	m->x = -1;
 	m->c.im = m->max.im - m->y * m->factor.im;
 	while (++m->x < WIDTH)
@@ -75,18 +78,26 @@ void				x_cycle(t_mlx *mlx)
 		set_color_m(mlx, m, m->i);
 		m->i++;
 	}
+	return (0);
 }
 
 int					draw_fractal(t_mlx *mlx)
 {
 	t_mand			m;
+	pthread_t		id[HEIGHT];
 
 	init_mand(mlx->iter, &m, mlx);
 	mlx->m = &m;
 	if (!mlx->help)
 	{
-		while (++m.y < HEIGHT)
-			x_cycle(mlx);
+		while (m.y < HEIGHT)
+		{
+			pthread_create(&id[m.y], NULL, x_cycle, mlx);
+			m.y++;
+		}
+		m.y = 0;
+		while (m.y < HEIGHT)
+			pthread_join(id[m.y++], NULL);
 	}
 	mlx_put_image_to_window(mlx->ptr, mlx->wind, mlx->img, 0, 0);
 	put_man(mlx);

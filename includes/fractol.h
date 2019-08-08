@@ -17,8 +17,6 @@
 # include <stdio.h>
 # include <mlx.h>
 # include <math.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 # include <pthread.h>
 # include "f_string.h"
 
@@ -102,6 +100,6 @@ void			put_man(t_mlx *mlx);
 int				draw_fractal(t_mlx *mlx);
 void			define_fractal(t_mlx *mlx, t_mand *m);
 void			define_fractal1(t_mlx *mlx, t_mand *m);
-void			x_cycle(t_mlx *mlx);
+void			*x_cycle(void *mlx_t);
 
 #endif
