@@ -36,9 +36,10 @@ void			init_mand(int iteration, t_mand *mand)
 
 void			put_man(t_mlx *mlx)
 {
-	(mlx->help == 0) ? mlx_string_put(mlx->ptr,
-	mlx->wind, WIDTH - 100, HEIGHT - 30, RED, HELP) : 0;
-	if (mlx->help == 1)
+	if (mlx->help == 0)
+		mlx_string_put(mlx->ptr,
+		mlx->wind, WIDTH - 100, HEIGHT - 30, RED, HELP);
+	else if (mlx->help == 1)
 	{
 		mlx_string_put(mlx->ptr, mlx->wind, W4, 10, GREEN, H1);
 		mlx_string_put(mlx->ptr, mlx->wind, W4, 30, GREEN, H2);

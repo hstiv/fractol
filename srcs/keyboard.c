@@ -31,7 +31,6 @@ void			reset_frac(t_mlx *mlx, int frac)
 	mlx->frac = frac;
 	mlx->min = init_complex(-4.0, -2.0);
 	mlx->max = init_complex(4.0, 2.0);
-	draw_fractal(mlx);
 }
 
 int				expose_hook(void *param)
