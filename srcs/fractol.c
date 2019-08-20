@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:51:39 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/06 17:51:41 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/08/20 14:07:47 by dtoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,15 @@ int				main(int c, char **s)
 		threw(USAGE, 1);
 	mlx.k = init_complex(-0.4, 0.6);
 	mlx.iter = 50;
+	mlx.min = init_complex(-4.0, -2.0);
+	mlx.max = init_complex(4.0, 2.0);
 	mlx.ptr = mlx_init();
 	mlx.img = NULL;
 	mlx.help = 0;
+	mlx.img = mlx_new_image(mlx.ptr, WIDTH, HEIGHT);
 	mlx.wind = mlx_new_window(mlx.ptr, WIDTH, HEIGHT, WIND);
+	mlx.picture = (int *)mlx_get_data_addr(mlx.img,
+	&mlx.bit_per_pixel, &mlx.size_line, &mlx.endian);
 	loop(&mlx);
 	exit(0);
 }

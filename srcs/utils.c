@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:52:10 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/06 17:52:11 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/08/20 14:19:21 by dtoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_complex		nit_complex(double re, double im)
+double			ft_intrpltn(double start, double end, double intrpltn)
+{
+	return (start + ((end - start) * intrpltn));
+}
+
+t_complex		init_complex(double re, double im)
 {
 	t_complex	complex;
 
@@ -21,19 +26,8 @@ t_complex		nit_complex(double re, double im)
 	return (complex);
 }
 
-void			init_mand(int iteration, t_mand *mand, t_mlx *mlx)
+void			init_mand(int iteration, t_mand *mand)
 {
-	(mlx->img) ? mlx_destroy_image(mlx->ptr, mlx->img) : 0;
-	mlx->img = mlx_new_image(mlx->ptr, WIDTH, HEIGHT);
-	mlx->picture = (int *)mlx_get_data_addr(mlx->img,
-	&mlx->bit_per_pixel, &mlx->size_line, &mlx->endian);
-	mand->min = init_complex(-2.0, -2.0);
-	mand->max.re = 2.0;
-	mand->max.im = mand->min.im +
-	(mand->max.re - mand->min.re) * HEIGHT / WIDTH;
-	mand->factor = init_complex(
-	(mand->max.re - mand->min.re) / (WIDTH - 1),
-	(mand->max.im - mand->min.im) / (HEIGHT - 1));
 	mand->max_iteration = iteration;
 	mand->iteration = 0;
 	mand->y = 0;
@@ -58,7 +52,7 @@ void			put_man(t_mlx *mlx)
 	}
 }
 
-void			set_color_m(t_mlx *mlx, t_mand *m, int i)
+void			set_color_m(t_mand *m)
 {
 	double		t;
 	int			red;
@@ -68,9 +62,14 @@ void			set_color_m(t_mlx *mlx, t_mand *m, int i)
 
 	c = m->iteration;
 	t = (double)m->iteration / (double)m->max_iteration;
-	red = (int)(9 * (1 - t) * pow(t, 3) * 255);
-	green = (int)(15 * pow((1 - t), 2) * pow(t, 2) * 255);
-	blue = (int)(8.5 * pow((1 - t), 3) * t * 255);
-	mlx->picture[i] = (c != m->max_iteration)
-	? (c << red) + (c << green) + (c << blue) : 0;
+	if (t == 1)
+		m->picture[m->i * WIDTH + m->x] = 0;
+	else
+	{
+		red = (int)(9 * (1 - t) * pow(t, 3) * 255);
+		green = (int)(15 * pow((1 - t), 2) * pow(t, 2) * 255);
+		blue = (int)(8.5 * pow((1 - t), 3) * t * 255);
+		m->picture[m->i * WIDTH + m->x] = (c != m->max_iteration)
+		? (c << red) + (c << green) + (c << blue) : 0;
+	}
 }

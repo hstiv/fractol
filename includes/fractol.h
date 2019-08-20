@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:51:30 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/06 17:51:32 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/08/20 13:48:17 by dtoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,15 @@ typedef	struct	s_mand
 	t_complex	z;
 	t_complex	min;
 	t_complex	max;
+	t_complex	k;
 	int			max_iteration;
 	int			iteration;
 	int			i;
 	int			x;
 	int			y;
+	int			iter;
+	int			frac;
+	int			*picture;
 }				t_mand;
 
 typedef struct	s_mlx
@@ -55,6 +59,8 @@ typedef struct	s_mlx
 	int			size_line;
 	int			endian;
 	int			iter;
+	t_complex	min;
+	t_complex	max;
 	t_complex	k;
 	t_mand		*m;
 	int			help;
@@ -85,21 +91,24 @@ int				key_release(int key, t_mlx *mlx);
 int				julia_motion(int x, int y, t_mlx *fractol);
 int				mouse_move(int x, int y, t_mlx *mlx);
 int				mouse_press(int keycode, int x, int y, t_mlx *mlx);
+int				zoom(int key, int x, int y, t_mlx *mlx);
+void			ft_zoom(t_mlx *fractol, double mre, double mim, double zoom);
 
 /*
-**				utils1.c					*
+**				utils.c						*
 */
 t_complex		init_complex(double re, double im);
-void			init_mand(int iteration, t_mand *mand, t_mlx *mlx);
-void			set_color_m(t_mlx *mlx, t_mand *m, int i);
+void			init_mand(int iteration, t_mand *mand);
+void			set_color_m(t_mand *m);
 void			put_man(t_mlx *mlx);
+double			ft_intrpltn(double start, double end, double intrpltn);
 
 /*
 **				draw_fractol.c				*
 */
 int				draw_fractal(t_mlx *mlx);
-void			define_fractal(t_mlx *mlx, t_mand *m);
-void			define_fractal1(t_mlx *mlx, t_mand *m);
+void			define_fractal(t_mand *m);
+void			define_fractal1(t_mand *m);
 void			*x_cycle(void *mlx_t);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 17:51:51 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/06 17:51:52 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/08/20 14:27:02 by dtoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void			reset_frac(t_mlx *mlx, int frac)
 	mlx->k = init_complex(-0.4, 0.6);
 	mlx->iter = 50;
 	mlx->frac = frac;
+	mlx->min = init_complex(-4.0, -2.0);
+	mlx->max = init_complex(4.0, 2.0);
 	draw_fractal(mlx);
 }
 
@@ -45,9 +47,10 @@ int				key_press(int key, t_mlx *mlx)
 {
 	(key == 53) ? exit(0) : 0;
 	(key == 124) ? mlx->iter++ : 0;
-	(key == 123) ? mlx->iter-- : 0;
+	(key == 123 && mlx->iter > 1) ? mlx->iter-- : 0;
 	(key == 4) ? mlx->help = 1 : 0;
 	if (key >= 83 && key <= 91)
 		reset_frac(mlx, key - 82);
+	draw_fractal(mlx);
 	return (0);
 }

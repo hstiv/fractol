@@ -3,7 +3,7 @@ NAME			=	fractol
 INC				=	includes/
 
 SRC_NAME		=	fractol.c draw_fractol.c keyboard.c \
-					mouse.c utils1.c
+					mouse.c utils.c
 
 SRC_PATH		=	srcs/
 
@@ -38,7 +38,7 @@ $(LIB_NAME):
 						@make -C $(LIB_PATH)
 
 $(NAME):			$(LIB) $(OBJ)
-						@gcc -Wall -Wextra -Werror $(OBJ) \
+						@gcc -Wall -Wextra -Werror -lpthread $(OBJ) \
 						-lmlx -framework OpenGL -framework AppKit -lm \
 						-L $(LIB_PATH) -lft -o $(NAME)
 						@echo "(•̀ᴗ•́)و $(NAME) generated!"
