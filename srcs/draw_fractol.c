@@ -102,20 +102,17 @@ int					draw_fractal(t_mlx *mlx)
 	int				i;
 
 	i = 0;
-	if (!mlx->help)
+	while (i < THRD)
 	{
-		while (i < THRD)
-		{
-			init_mand(mlx->iter, &m[i]);
-			cp_struct(m, mlx, i);
-			m[i].y = i;
-			pthread_create(&id[i], NULL, x_cycle, (void*)&m[i]);
-			i++;
-		}
-		i = -1;
-		while (++i < THRD)
-			pthread_join(id[i], NULL);
+		init_mand(mlx->iter, &m[i]);
+		cp_struct(m, mlx, i);
+		m[i].y = i;
+		pthread_create(&id[i], NULL, x_cycle, (void*)&m[i]);
+		i++;
 	}
+	i = -1;
+	while (++i < THRD)
+		pthread_join(id[i], NULL);
 	mlx_clear_window(mlx->ptr, mlx->wind);
 	mlx_put_image_to_window(mlx->ptr, mlx->wind, mlx->img, 0, 0);
 	put_man(mlx);
