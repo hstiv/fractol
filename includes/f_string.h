@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   f_string.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 17:51:22 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/20 14:20:41 by dtoy             ###   ########.fr       */
+/*   Created: 2019/08/23 12:43:10 by hstiv             #+#    #+#             */
+/*   Updated: 2019/08/23 12:50:15 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@
 # define H8			"8 - celtic mandelbrot"
 # define IT			"< / > - iteration"
 
-# define HEIGHT		720
-# define WIDTH		1000
+# define HEIGHT		1395
+# define WIDTH		1900
 # define WHITE		16777215
 # define GREEN		65280
 # define RED		16711680
