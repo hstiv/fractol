@@ -13,5 +13,5 @@ Fract'ol 42 Project
 ---> c_mandelbrot (celtic mandelbrot)
 
 <p align="center">
-  <img src="img/fractal_png.png">
+  <img src="fractal_png.png">
 </p>
