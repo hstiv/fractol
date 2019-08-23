@@ -57,7 +57,7 @@ int				main(int c, char **s)
 	if (!check_args(c, s, &mlx))
 		threw(USAGE, 1);
 	mlx.k = init_complex(-0.4, 0.6);
-	mlx.iter = 50;
+	mlx.iter = ITER;
 	mlx.min = init_complex(-4.0, -2.0);
 	mlx.max = init_complex(4.0, 2.0);
 	mlx.ptr = mlx_init();

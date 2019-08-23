@@ -50,8 +50,8 @@
 # define H8			"8 - celtic mandelbrot"
 # define IT			"< / > - iteration"
 
-# define HEIGHT		1395
-# define WIDTH		1900
+# define HEIGHT		520
+# define WIDTH		900
 # define WHITE		16777215
 # define GREEN		65280
 # define RED		16711680
@@ -60,5 +60,6 @@
 # define PINK		16715426
 # define W4			WIDTH - 300
 # define THRD		8
+# define ITER       15
 
 #endif
