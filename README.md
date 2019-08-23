@@ -3,7 +3,7 @@ Fract'ol 42 Project
 
  Usage :  ./fractol [fractol_name]
  
- ---> julia
+---> julia
 ---> mandelbrot
 ---> mandelbar
 ---> b_ship (burning ship)
