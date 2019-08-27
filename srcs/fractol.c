@@ -12,6 +12,29 @@
 
 #include "fractol.h"
 
+static void		init_struct(t_mlx *mlx)
+{
+	mlx->k = init_complex(-0.4, 0.6);
+	mlx->iter = ITER;
+	mlx->min = init_complex(-4.0, -2.0);
+	mlx->max = init_complex(4.0, 2.0);
+	mlx->ptr = mlx_init();
+	mlx->img = NULL;
+	mlx->help = 0;
+	mlx->img = mlx_new_image(mlx->ptr, WIDTH, HEIGHT);
+	mlx->wind = mlx_new_window(mlx->ptr, WIDTH, HEIGHT, WIND);
+	mlx->picture = (int *)mlx_get_data_addr(mlx->img,
+	&mlx->bit_per_pixel, &mlx->size_line, &mlx->endian);
+	mlx->f[1] = &julia;
+	mlx->f[2] = &mandelbrot;
+	mlx->f[3] = &mandelbar;
+	mlx->f[4] = &b_ship;
+	mlx->f[5] = &p_buffalo;
+	mlx->f[6] = &pb_ship;
+	mlx->f[7] = &p_mandelbrot;
+	mlx->f[8] = &c_mandelbrot;
+}
+
 int				threw(char *s, int i)
 {
 	if (s == NULL)
@@ -56,17 +79,7 @@ int				main(int c, char **s)
 
 	if (!check_args(c, s, &mlx))
 		threw(USAGE, 1);
-	mlx.k = init_complex(-0.4, 0.6);
-	mlx.iter = ITER;
-	mlx.min = init_complex(-4.0, -2.0);
-	mlx.max = init_complex(4.0, 2.0);
-	mlx.ptr = mlx_init();
-	mlx.img = NULL;
-	mlx.help = 0;
-	mlx.img = mlx_new_image(mlx.ptr, WIDTH, HEIGHT);
-	mlx.wind = mlx_new_window(mlx.ptr, WIDTH, HEIGHT, WIND);
-	mlx.picture = (int *)mlx_get_data_addr(mlx.img,
-	&mlx.bit_per_pixel, &mlx.size_line, &mlx.endian);
+	init_struct(mlx);
 	loop(&mlx);
 	exit(0);
 }

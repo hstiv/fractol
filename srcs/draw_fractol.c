@@ -12,48 +12,6 @@
 
 #include "fractol.h"
 
-void				define_fractal1(t_mand *m)
-{
-	if (m->frac == 5)
-		m->z = init_complex(
-			fabs(pow(m->z.re, 2.0) - pow(m->z.im, 2.0)) + m->c.re,
-			-2.0 * m->z.re * fabs(m->z.im) + m->c.im);
-	else if (m->frac == 6)
-		m->z = init_complex(
-			pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
-			-2.0 * m->z.re * fabs(m->z.im) + m->c.im);
-	else if (m->frac == 7)
-		m->z = init_complex(
-			pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
-			-2.0 * fabs(m->z.re) * m->z.im + m->c.im);
-	else if (m->frac == 8)
-		m->z = init_complex(
-			fabs(pow(m->z.re, 2.0) - pow(m->z.im, 2.0)) + m->c.re,
-			-2.0 * m->z.re * m->z.im + m->c.im);
-}
-
-void				define_fractal(t_mand *m)
-{
-	if (m->frac == 1)
-		m->z = init_complex(
-			pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->k.re,
-			2.0 * m->z.re * m->z.im + m->k.im);
-	else if (m->frac == 2)
-		m->z = init_complex(
-			pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
-			2.0 * m->z.re * m->z.im + m->c.im);
-	else if (m->frac == 3)
-		m->z = init_complex(
-			pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
-			-2.0 * m->z.re * m->z.im + m->c.im);
-	else if (m->frac == 4)
-		m->z = init_complex(
-			pow(m->z.re, 2.0) - pow(m->z.im, 2.0) + m->c.re,
-			-2.0 * fabs(m->z.re * m->z.im) + m->c.im);
-	else
-		define_fractal1(m);
-}
-
 void				*x_cycle(void *mlx)
 {
 	t_mand			*m;
@@ -72,7 +30,7 @@ void				*x_cycle(void *mlx)
 			while (pow(m->z.re, 2.0) + pow(m->z.im, 2.0) <= 4
 			&& m->iteration < m->max_iteration)
 			{
-				define_fractal(m);
+				mlx->f[mlx->frac](m);
 				m->iteration++;
 			}
 			set_color_m(m);
