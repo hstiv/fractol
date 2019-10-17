@@ -69,6 +69,7 @@ typedef struct	s_mlx
 /*
 **	------------FUNCTIONS-------------	*
 */
+void			(*form[8])(t_mand *);
 
 /*
 **				fractol.c					*
@@ -97,6 +98,7 @@ void			ft_zoom(t_mlx *fractol, double mre, double mim, double zoom);
 /*
 **				utils.c						*
 */
+void			init_global_var();
 t_complex		init_complex(double re, double im);
 void			init_mand(int iteration, t_mand *mand);
 void			set_color_m(t_mand *m);
@@ -106,8 +108,19 @@ void			put_man(t_mlx *mlx);
 **				draw_fractol.c				*
 */
 int				draw_fractal(t_mlx *mlx);
-void			define_fractal(t_mand *m);
-void			define_fractal1(t_mand *m);
+void			cp_struct(t_mand *bunch, t_mlx *mlx, int y);
 void			*x_cycle(void *mlx_t);
+
+/*
+**				f1_4.c, f4_8.c				*
+*/
+void			julia(t_mand *m);
+void			mandelbrot(t_mand *m);
+void			mandelbar(t_mand *m);
+void			b_ship(t_mand *m);
+void			p_buffalo(t_mand *m);
+void			pb_ship(t_mand *m);
+void			p_mandelbrot(t_mand *m);
+void			p_mandelbar(t_mand *m);
 
 #endif

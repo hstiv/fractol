@@ -12,6 +12,18 @@
 
 #include "fractol.h"
 
+void			init_global_var()
+{
+	form[0] = &julia;
+	form[1] = &mandelbrot;
+	form[2] = &mandelbar;
+	form[3] = &b_ship;
+	form[4] = &p_buffalo;
+	form[5] = &pb_ship;
+	form[6] = &p_mandelbrot;
+	form[7] = &p_mandelbar;
+}
+
 t_complex		init_complex(double re, double im)
 {
 	t_complex	complex;
@@ -62,9 +74,9 @@ void			set_color_m(t_mand *m)
 		m->picture[m->i * WIDTH + m->x] = 0;
 	else
 	{
-		red = (int)(9 * (1 - t) * pow(t, 3) * 255);
-		green = (int)(15 * pow((1 - t), 2) * pow(t, 2) * 255);
-		blue = (int)(8.5 * pow((1 - t), 3) * t * 255);
+		red = (int)(9 * (1 - t) * t * t * t * 255);
+		green = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+		blue = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
 		m->picture[m->i * WIDTH + m->x] = (c != m->max_iteration)
 		? (c << red) + (c << green) + (c << blue) : 0;
 	}
