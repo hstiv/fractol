@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/23 12:44:43 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/23 12:44:45 by hstiv            ###   ########.fr       */
+/*   Created: 2019/08/06 17:52:03 by hstiv             #+#    #+#             */
+/*   Updated: 2019/08/20 13:49:23 by dtoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void			ft_zoom(t_mlx *fractol, double mre, double mim, double zoom)
+void			ft_zoom(t_mlx *fr, double mre, double mim, double zoom)
 {
 	double		intrpltn;
 
 	intrpltn = 1.0 / zoom;
-	(*fractol).min.re = ft_intrpltn(mre, (*fractol).min.re, intrpltn);
-	(*fractol).min.im = ft_intrpltn(mim, (*fractol).min.im, intrpltn);
-	(*fractol).max.re = ft_intrpltn(mre, (*fractol).max.re, intrpltn);
-	(*fractol).max.im = ft_intrpltn(mim, (*fractol).max.im, intrpltn);
+	(*fr).min.re = mre + ((*fr).min.re - mre) * intrpltn;
+	(*fr).min.im = mim + ((*fr).min.im - mim) * intrpltn;
+	(*fr).max.re = mre + ((*fr).max.re - mre) * intrpltn;
+	(*fr).max.im = mim + ((*fr).max.im - mim) * intrpltn;
 }
 
 int				julia_motion(int x, int y, t_mlx *mlx)

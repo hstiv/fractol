@@ -3,7 +3,7 @@ NAME			=	fractol
 INC				=	includes/
 
 SRC_NAME		=	fractol.c draw_fractol.c keyboard.c \
-					mouse.c utils.c frac_p1.c frac_p2.c
+					mouse.c utils.c
 
 SRC_PATH		=	srcs/
 

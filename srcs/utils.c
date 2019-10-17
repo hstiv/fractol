@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/23 12:44:54 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/23 12:44:55 by hstiv            ###   ########.fr       */
+/*   Created: 2019/08/06 17:52:10 by hstiv             #+#    #+#             */
+/*   Updated: 2019/08/20 14:19:21 by dtoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-double			ft_intrpltn(double start, double end, double intrpltn)
-{
-	return (start + ((end - start) * intrpltn));
-}
 
 t_complex		init_complex(double re, double im)
 {

@@ -3,37 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/23 12:44:01 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/23 12:44:03 by hstiv            ###   ########.fr       */
+/*   Created: 2019/08/06 17:51:39 by hstiv             #+#    #+#             */
+/*   Updated: 2019/08/20 14:07:47 by dtoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static void		init_struct(t_mlx *mlx)
-{
-	mlx->k = init_complex(-0.4, 0.6);
-	mlx->iter = ITER;
-	mlx->min = init_complex(-4.0, -2.0);
-	mlx->max = init_complex(4.0, 2.0);
-	mlx->ptr = mlx_init();
-	mlx->img = NULL;
-	mlx->help = 0;
-	mlx->img = mlx_new_image(mlx->ptr, WIDTH, HEIGHT);
-	mlx->wind = mlx_new_window(mlx->ptr, WIDTH, HEIGHT, WIND);
-	mlx->picture = (int *)mlx_get_data_addr(mlx->img,
-	&mlx->bit_per_pixel, &mlx->size_line, &mlx->endian);
-	mlx->f[1] = &julia;
-	mlx->f[2] = &mandelbrot;
-	mlx->f[3] = &mandelbar;
-	mlx->f[4] = &b_ship;
-	mlx->f[5] = &p_buffalo;
-	mlx->f[6] = &pb_ship;
-	mlx->f[7] = &p_mandelbrot;
-	mlx->f[8] = &c_mandelbrot;
-}
 
 int				threw(char *s, int i)
 {
@@ -79,7 +56,17 @@ int				main(int c, char **s)
 
 	if (!check_args(c, s, &mlx))
 		threw(USAGE, 1);
-	init_struct(mlx);
+	mlx.k = init_complex(-0.4, 0.6);
+	mlx.iter = 50;
+	mlx.min = init_complex(-4.0, -2.0);
+	mlx.max = init_complex(4.0, 2.0);
+	mlx.ptr = mlx_init();
+	mlx.img = NULL;
+	mlx.help = 0;
+	mlx.img = mlx_new_image(mlx.ptr, WIDTH, HEIGHT);
+	mlx.wind = mlx_new_window(mlx.ptr, WIDTH, HEIGHT, WIND);
+	mlx.picture = (int *)mlx_get_data_addr(mlx.img,
+	&mlx.bit_per_pixel, &mlx.size_line, &mlx.endian);
 	loop(&mlx);
 	exit(0);
 }

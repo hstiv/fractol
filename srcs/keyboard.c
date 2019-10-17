@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/23 12:44:30 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/23 12:44:32 by hstiv            ###   ########.fr       */
+/*   Created: 2019/08/06 17:51:51 by hstiv             #+#    #+#             */
+/*   Updated: 2019/08/20 14:27:02 by dtoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void			reset_frac(t_mlx *mlx, int frac)
 		return ;
 	}
 	mlx->k = init_complex(-0.4, 0.6);
-	mlx->iter = ITER;
+	mlx->iter = 50;
 	mlx->frac = frac;
 	mlx->min = init_complex(-4.0, -2.0);
 	mlx->max = init_complex(4.0, 2.0);

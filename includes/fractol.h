@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dtoy <dtoy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/23 12:43:33 by hstiv             #+#    #+#             */
-/*   Updated: 2019/08/23 12:43:36 by hstiv            ###   ########.fr       */
+/*   Created: 2019/08/06 17:51:30 by hstiv             #+#    #+#             */
+/*   Updated: 2019/08/20 13:48:17 by dtoy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct	s_mlx
 	t_complex	k;
 	t_mand		*m;
 	int			help;
-	void		(*f[9])(t_mand *);
 }				t_mlx;
 
 /*
@@ -102,29 +101,13 @@ t_complex		init_complex(double re, double im);
 void			init_mand(int iteration, t_mand *mand);
 void			set_color_m(t_mand *m);
 void			put_man(t_mlx *mlx);
-double			ft_intrpltn(double start, double end, double intrpltn);
 
 /*
 **				draw_fractol.c				*
 */
 int				draw_fractal(t_mlx *mlx);
-void			cp_struct(t_mand *bunch, t_mlx *mlx, int y);
+void			define_fractal(t_mand *m);
+void			define_fractal1(t_mand *m);
 void			*x_cycle(void *mlx_t);
-
-/*
-**				frac_p1.c					*
-*/
-void			julia(t_mand *m);
-void			mandelbrot(t_mand *m);
-void			mandelbar(t_mand *m);
-void			b_ship(t_mand *m);
-
-/*
-**				frac_p2.c					*
-*/
-void			p_buffalo(t_mand *m);
-void			pb_ship(t_mand *m);
-void			p_mandelbrot(t_mand *m);
-void			c_mandelbrot(t_mand *m);
 
 #endif
