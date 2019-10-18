@@ -58,7 +58,7 @@ int				main(int c, char **s)
 		threw(USAGE, 1);
 	init_global_var();
 	mlx.k = init_complex(-0.4, 0.6);
-	mlx.iter = 50;
+	mlx.iter = 80;
 	mlx.min = init_complex(-4.0, -2.0);
 	mlx.max = init_complex(4.0, 2.0);
 	mlx.ptr = mlx_init();

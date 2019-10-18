@@ -27,7 +27,7 @@ void			reset_frac(t_mlx *mlx, int frac)
 		return ;
 	}
 	mlx->k = init_complex(-0.4, 0.6);
-	mlx->iter = 50;
+	mlx->iter = 80;
 	mlx->frac = frac;
 	mlx->min = init_complex(-4.0, -2.0);
 	mlx->max = init_complex(4.0, 2.0);
